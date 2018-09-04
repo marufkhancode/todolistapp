@@ -7,6 +7,7 @@ button {
 
 body {
     padding: 80px 0 0 0;
+    background-color: #ededed9e;
 }
 
 .noFill {
@@ -21,7 +22,7 @@ header {
     top: 0;
     left: 0;
     z-index: 5;
-    background: #25b99a;
+    background: #2fbcc4;
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
     border-bottom-right-radius: 10px;
@@ -85,7 +86,7 @@ header button svg {
 }
 
 header button svg .fill {
-    fill: #25b99a;
+    fill: #2fbcc4;
 }
 
 /* styling TODO list */
@@ -111,7 +112,7 @@ ul.todo li {
     box-sizing: border-box;
     position: relative;
     padding: 14px 100px 14px 14px;
-    box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.10);
+    box-shadow: 0px 4px 4px rgba(44, 62, 80, 0.10);
     margin: 0 0 10px 0;
     word-break: break-word;
 }
@@ -163,17 +164,17 @@ ul.todo li .buttons button svg {
 
 ul.todo li .buttons button.complete svg {
     border-radius: 13px;
-    border: 1.5px solid #25b99a;
+    border: 1.5px solid #2fbcc4;
     transition: background 0.2s ease;
 }
 
 ul.todo#completed li .buttons button.complete svg {
-    background: #25b99a;
+    background: #2fbcc4;
     border: 0px;
 }
 
 ul.todo:not(#completed) li .buttons button.complete:hover svg {
-    background: rgba(37, 185, 154, 0.75);
+    background: rgba(37, 180, 185, 0.75);
 }
 
 ul.todo:not(#completed) li .buttons button.complete:hover svg .fill {
@@ -197,7 +198,7 @@ ul.todo li .buttons button.remove:hover svg .fill {
 }
 
 ul.todo li .buttons button.complete svg .fill {
-    fill: #25b99a;
+    fill: #2fbcc4;
 }
 
 ul.todo#completed {
@@ -232,11 +233,68 @@ ul.todo#completed:empty:after {
     content: 'You have yet to complete any tasks.';
 }
 
-/* ul.todo#todo:after,
-ul.todo#completed:after {
+.content {
+    display: none;
+}
+
+.preload {
+    top: 0;
+    left: 0;
+    margin: 0 auto;
     width: 100%;
-    display: block;
-    text-align: center;
-    font-size: 12px;
-    color: #aaa;
-} */
+    height: 100%;
+    position: fixed;
+    background: #333;
+    padding-top: 5em;
+    display: flex;
+    justify-content: center;
+}
+
+/* DEMO-SPECIFIC STYLES */
+
+.typewriter {
+    /* left: 50%; */
+    margin-left: 10px;
+    top: 40%;
+    position: absolute;
+}
+
+.typewriter h1 {
+    font-size: 5rem;
+    color: #fff;
+    font-family: monospace;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #2fbcc4;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .12em;
+    /* Adjust as needed */
+    animation: typing 3.5s steps(30, end), blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: #2fbcc4
+    }
+}

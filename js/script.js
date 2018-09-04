@@ -13,20 +13,25 @@ renderTodoList()
 document.getElementById('add').addEventListener('click', function () {
     var value = document.getElementById('item').value;
     if (value) {
-        addItemToDOM(value);
-        document.getElementById('item').value = '';
-        data.todo.push(value);
-        dataObjectUpdated();
+        addItem(value);
     }
 });
 
 document.getElementById('item').addEventListener('keydown', function (e) {
-    console.log(e)
     var value = this.value;
     if ((e.code === 'Enter' || e.code === 'NumpadEnter') && value) {
-        addItemToDOM(value);
+        addItem(value);
+        // document.getElementById('item').value = '';
     }
 });
+
+function addItem(value) {
+    addItemToDOM(value);
+    document.getElementById('item').value = '';
+
+    data.todo.push(value);
+    dataObjectUpdated();
+}
 
 function renderTodoList() {
     if (!data.todo.length && !data.completed.length) return;
@@ -34,7 +39,7 @@ function renderTodoList() {
         var value = data.todo[i];
         addItemToDOM(value);
     }
-    for (var j = 0; j < data.todo.length; j++) {
+    for (var j = 0; j < data.completed.length; j++) {
         var value = data.completed[j];
         addItemToDOM(value, true);
     }
@@ -116,3 +121,9 @@ function addItemToDOM(text, completed) {
     list.insertBefore(item, list.childNodes[0]);
 
 }
+
+$(function () {
+    $('.preload').fadeOut(7000, function () {
+        $('.content').fadeIn(3000);
+    })
+});
